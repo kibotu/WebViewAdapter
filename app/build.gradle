@@ -10,6 +10,7 @@ android {
     buildToolsVersion buildToolsVer
 
     defaultConfig {
+        multiDexEnabled true
         applicationId "net.kibotu.webviewadapter.app"
         minSdkVersion 15
         targetSdkVersion targetSdkVer
@@ -63,6 +64,7 @@ android {
 
 dependencies {
     implementation libs.kotlinJdk8
+    implementation libs.supportMultidex
     implementation libs.supportAppCompat
     implementation libs.appCompatResources
     implementation libs.constraintLayout
