@@ -1,8 +1,11 @@
 package net.kibotu.webviewadapter.app
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
+/**
+ * Created by [Jan Rabe](https://about.me/janrabe).
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
