@@ -24,12 +24,34 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    // region build types
+
     buildTypes {
-        release {
+
+        debug {
+            applicationIdSuffix ""
+            pseudoLocalesEnabled true
+            debuggable true
             minifyEnabled false
+            crunchPngs false
+            shrinkResources false
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ext.alwaysUpdateBuildId = false
+        }
+
+        release {
+            pseudoLocalesEnabled false
+            debuggable false
+            minifyEnabled true
+            crunchPngs true
+            shrinkResources true
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    // endregion
 
     // region lint options
 
