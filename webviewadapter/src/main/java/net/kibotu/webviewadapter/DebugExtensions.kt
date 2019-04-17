@@ -6,16 +6,17 @@
 
 package net.kibotu.webviewadapter
 
+import android.content.Context
 import android.util.Log
 
 internal val debug = true
 
-internal fun Any.log(message: String?) {
+internal fun Any.log(message: (() -> String?)?) {
     if (debug)
-        Log.d(this::class.java.simpleName, "$message")
+        Log.d(this::class.java.simpleName, "${message?.invoke()}")
 }
 
-internal fun Exception.log(message: String?) {
-    if (debug)
-        Log.d(this::class.java.simpleName, "$message")
-}
+internal fun Int.resName(context: Context) = context.resources.getResourceEntryName(this)
+
+internal fun Tab.resNameString(context: Context) =
+    "Tab(url='$url', label=${label.resName(context)}, icon=${icon.resName(context)}, inactiveColor=${inactiveColor.resName(context)}, activeColor=${activeColor.resName(context)})"

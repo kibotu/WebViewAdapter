@@ -21,18 +21,18 @@ open class WebViewPageAdapter(
     var currentItem: Int = 0
         set(value) {
             field = value
-            log("currentItem $value -> ${pages[value].url}")
+            log { "currentItem $value -> ${pages[value].url}" }
             webView.loadUrl(pages[value].url)
             tabLayout.getTabAt(value)?.select()
         }
 
     init {
-        log("init")
+        log { "init" }
         tabLayout.addOnTabSelectedListener(this)
     }
 
     protected fun populateTabs() {
-        log("populateTabs ${tabLayout.tabCount}")
+        log { "populateTabs ${tabLayout.tabCount}" }
         for (i in 0 until tabLayout.tabCount) {
             val customView = LayoutInflater.from(tabLayout.context).inflate(R.layout.adapter_tab_icon, tabLayout, false)
             customView.label.setText(pages[i].label)
@@ -62,7 +62,7 @@ open class WebViewPageAdapter(
 
     override fun notifyDataSetChanged() {
         super.notifyDataSetChanged()
-        log("notifyDataSetChanged")
+        log { "notifyDataSetChanged" }
 
         @Suppress("DEPRECATION")
         tabLayout.setTabsFromPagerAdapter(this)
@@ -77,17 +77,17 @@ open class WebViewPageAdapter(
     // region TabLayout.OnTabSelectedListener
 
     override fun onTabReselected(tab: TabLayout.Tab?) {
-        log("onTabReselected ${tab?.position}")
+        log { "onTabReselected ${tab?.position}" }
     }
 
     override fun onTabUnselected(tab: TabLayout.Tab?) {
-        log("onTabUnselected ${tab?.position}")
+        log { "onTabUnselected ${tab?.position}" }
 
         styleUnselectedTab(tab ?: return)
     }
 
     override fun onTabSelected(tab: TabLayout.Tab?) {
-        log("onTabSelected ${tab?.position}")
+        log { "onTabSelected ${tab?.position}" }
 
         styleSelectedTab(tab ?: return)
 
@@ -100,12 +100,12 @@ open class WebViewPageAdapter(
     // region styling tabs
 
     protected fun styleSelectedTab(tab: TabLayout.Tab) {
-        log("styleSelectedTab ${tab.position}")
+        log { "styleSelectedTab ${tab.position}" }
         tab.setTabColor(ContextCompat.getColor(tabLayout.context, pages[tab.position].activeColor))
     }
 
     protected fun styleUnselectedTab(tab: TabLayout.Tab) {
-        log("styleUnselectedTab ${tab.position}")
+        log { "styleUnselectedTab ${tab.position}" }
         tab.setTabColor(ContextCompat.getColor(tabLayout.context, pages[tab.position].inactiveColor))
     }
 
@@ -117,7 +117,7 @@ open class WebViewPageAdapter(
     // endregion
 
     fun add(tab: Tab) {
-        log("add $tab ${tabLayout.tabs().size}")
+        log { "add ${tab.resNameString(tabLayout.context)}" }
         pages.add(tab)
     }
 }

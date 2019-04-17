@@ -23,11 +23,11 @@ class MainActivity : AppCompatActivity() {
 
         adapter = WebViewPageAdapter(webView, tabLayout)
 
-        adapter.add(Tab("https://github.com/kibotu/RecyclerViewPresenter", R.string.tab_1, R.drawable.ic_edit_black_24dp, R.color.colorPrimaryDark, R.color.colorPrimary))
-        adapter.add(Tab("https://github.com/kibotu/Heart-Rate-Ometer", R.string.tab_2, R.drawable.ic_edit_black_24dp, R.color.colorPrimaryDark, R.color.colorPrimary))
-        adapter.add(Tab("https://github.com/kibotu/Android-PGP", R.string.tab_3, R.drawable.ic_edit_black_24dp, R.color.colorPrimaryDark, R.color.colorPrimary))
-        adapter.add(Tab("https://github.com/kibotu/StreamingAndroidLogger", R.string.tab_4, R.drawable.ic_edit_black_24dp, R.color.colorPrimaryDark, R.color.colorPrimary))
-        adapter.add(Tab("https://github.com/kibotu/KalmanRx", R.string.tab_5, R.drawable.ic_edit_black_24dp, R.color.colorPrimaryDark, R.color.colorPrimary))
+        adapter.add(Tab("https://github.com/kibotu/RecyclerViewPresenter", R.string.tab_1, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
+        adapter.add(Tab("https://github.com/kibotu/Heart-Rate-Ometer", R.string.tab_2, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
+        adapter.add(Tab("https://github.com/kibotu/Android-PGP", R.string.tab_3, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
+        adapter.add(Tab("https://github.com/kibotu/StreamingAndroidLogger", R.string.tab_4, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
+        adapter.add(Tab("https://github.com/kibotu/KalmanRx", R.string.tab_5, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
 
         adapter.notifyDataSetChanged()
     }
