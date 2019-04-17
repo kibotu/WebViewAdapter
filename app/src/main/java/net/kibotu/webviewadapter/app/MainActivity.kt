@@ -2,6 +2,7 @@ package net.kibotu.webviewadapter.app
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.exozet.android.core.extensions.onClick
 import kotlinx.android.synthetic.main.activity_main.*
 import net.kibotu.logger.LogcatLogger
 import net.kibotu.logger.Logger
@@ -30,6 +31,17 @@ class MainActivity : AppCompatActivity() {
         adapter.add(Tab("https://github.com/kibotu/KalmanRx", R.string.tab_5, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
 
         adapter.notifyDataSetChanged()
+
+
+        // selecting tab without loading url, required for selecting tabs on in-webview-navigation
+
+        selectPreviousTab.onClick {
+            adapter.selectCurrentItem(adapter.currentItem - 1, false)
+        }
+
+        selectNextTab.onClick {
+            adapter.selectCurrentItem(adapter.currentItem + 1, false)
+        }
     }
 
     override fun onBackPressed() {

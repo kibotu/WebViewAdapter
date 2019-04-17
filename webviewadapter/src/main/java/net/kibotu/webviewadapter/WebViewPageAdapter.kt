@@ -6,6 +6,7 @@ import android.view.View
 import android.webkit.WebView
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
+import androidx.core.math.MathUtils.clamp
 import androidx.viewpager.widget.PagerAdapter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.adapter_tab_icon.view.*
@@ -16,19 +17,22 @@ open class WebViewPageAdapter(
     protected val tabLayout: TabLayout
 ) : PagerAdapter(), TabLayout.OnTabSelectedListener {
 
-    protected val pages: MutableList<Tab> = mutableListOf()
-
-    var currentItem: Int = 0
-        set(value) {
-            field = value
-            log { "currentItem $value -> ${pages[value].url}" }
-            webView.loadUrl(pages[value].url)
-            tabLayout.getTabAt(value)?.select()
-        }
-
     init {
         log { "init" }
         tabLayout.addOnTabSelectedListener(this)
+    }
+
+    protected val pages: MutableList<Tab> = mutableListOf()
+
+    var currentItem: Int = 0
+        private set
+
+    fun selectCurrentItem(current: Int, loadUrl: Boolean = true) {
+        currentItem = clamp(current, 0, pages.size - 1)
+        log { "selectCurrentItem $currentItem -> ${pages[currentItem].url}" }
+        if (loadUrl)
+            webView.loadUrl(pages[currentItem].url)
+        tabLayout.getTabAt(currentItem)?.select()
     }
 
     protected fun populateTabs() {
@@ -69,7 +73,7 @@ open class WebViewPageAdapter(
 
         populateTabs()
 
-        currentItem = 0
+        selectCurrentItem(0)
     }
 
     // endregion
