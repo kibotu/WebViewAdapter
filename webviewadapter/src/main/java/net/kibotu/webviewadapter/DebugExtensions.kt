@@ -8,7 +8,7 @@ package net.kibotu.webviewadapter
 
 import android.util.Log
 
-internal val debug = false
+internal val debug = true
 
 internal fun Any.log(message: String?) {
     if (debug)

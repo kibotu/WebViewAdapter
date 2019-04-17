@@ -17,6 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     compileOptions {
@@ -82,6 +83,14 @@ android {
     }
 
     // endregion
+
+    // region exclude duplicated meta inf files
+
+    packagingOptions {
+        exclude 'META-INF/library-core_release.kotlin_module'
+    }
+
+    // endregion
 }
 
 dependencies {
@@ -91,6 +100,7 @@ dependencies {
     implementation libs.appCompatResources
     implementation libs.constraintLayout
     implementation libs.androidKtx
+    implementation libs.supportDesign
 
     implementation project(':webviewadapter')
 

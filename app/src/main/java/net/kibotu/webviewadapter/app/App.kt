@@ -1,7 +1,7 @@
 package net.kibotu.webviewadapter.app
 
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDexApplication
-import net.kibotu.logger.Logger
 
 
 /**
@@ -9,13 +9,7 @@ import net.kibotu.logger.Logger
  */
 class App : MultiDexApplication() {
 
-    override fun onCreate() {
-        super.onCreate()
-        Logger.with(this)
-    }
-
-    override fun onTerminate() {
-        super.onTerminate()
-        Logger.onTerminate()
+    init {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
     }
 }
