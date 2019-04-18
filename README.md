@@ -20,6 +20,30 @@ ActionBar like usability for a webview. Also modular handling of uri event handl
 
 ### How to use
 
+1 [prepare layout](https://github.com/kibotu/WebViewAdapter/blob/master/app/src/main/res/layout/activity_main.xml#L10-L41)
+
+    <androidx.constraintlayout.widget.ConstraintLayout>
+        <WebView/>
+        <com.google.android.material.tabs.TabLayout/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+2 [add adapter pages](https://github.com/kibotu/WebViewAdapter/blob/master/app/src/main/java/net/kibotu/webviewadapter/app/MainActivity.kt#L33-L41)
+
+     adapter = WebViewPageAdapter(webView, tabLayout)
+
+     adapter.add(Tab("https://github.com/kibotu/RecyclerViewPresenter", R.string.tab_1, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
+     adapter.add(Tab("https://github.com/kibotu/Heart-Rate-Ometer", R.string.tab_2, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
+     adapter.add(Tab("https://github.com/kibotu/Android-PGP", R.string.tab_3, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
+     adapter.add(Tab("https://github.com/kibotu/StreamingAndroidLogger", R.string.tab_4, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
+     adapter.add(Tab("https://github.com/kibotu/KalmanRx", R.string.tab_5, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
+
+     adapter.notifyDataSetChanged()
+
+3 [load intial url](https://github.com/kibotu/WebViewAdapter/blob/master/app/src/main/java/net/kibotu/webviewadapter/app/MainActivity.kt#L44-L52)
+
+    adapter.selectCurrentItem(0, true)
+
+4 profit
 
 
 ###License
