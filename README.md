@@ -3,8 +3,6 @@
 
 ActionBar like usability for a webview. Also modular handling of uri event handler.
 
-[![Screenshot](https://raw.githubusercontent.com/kibotu/WebViewAdapter/master/screenshot.png)](https://raw.githubusercontent.com/kibotu/WebViewAdapter/master/screenshot.png)
-
 ### How to install
 
 	repositories {
@@ -20,14 +18,14 @@ ActionBar like usability for a webview. Also modular handling of uri event handl
 
 ### How to use
 
-1 [prepare layout](https://github.com/kibotu/WebViewAdapter/blob/master/app/src/main/res/layout/activity_main.xml#L10-L41)
+1 [prepare layout](app/src/main/res/layout/activity_main.xml#L10-L41)
 
     <androidx.constraintlayout.widget.ConstraintLayout>
         <WebView/>
         <com.google.android.material.tabs.TabLayout/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-2 [add adapter pages](https://github.com/kibotu/WebViewAdapter/blob/master/app/src/main/java/net/kibotu/webviewadapter/app/MainActivity.kt#L33-L41)
+2 [add adapter pages](app/src/main/java/net/kibotu/webviewadapter/app/MainActivity.kt#L34-L46)
 
      adapter = WebViewPageAdapter(webView, tabLayout)
 
@@ -39,11 +37,11 @@ ActionBar like usability for a webview. Also modular handling of uri event handl
 
      adapter.notifyDataSetChanged()
 
-3 [load intial url](https://github.com/kibotu/WebViewAdapter/blob/master/app/src/main/java/net/kibotu/webviewadapter/app/MainActivity.kt#L44-L52)
+3 [load intial url](app/src/main/java/net/kibotu/webviewadapter/app/MainActivity.kt#L51-L56)
 
-    adapter.selectCurrentItem(0, true)
+    adapter.selectCurrentItem(0)
 
-(optional) add onLoading Url callback
+(optional) [add onLoading Url callback](app/src/main/java/net/kibotu/webviewadapter/app/MainActivity.kt#L36)
 
     adapter.onLoadUrl = { logv("onLoading $it") }
 
