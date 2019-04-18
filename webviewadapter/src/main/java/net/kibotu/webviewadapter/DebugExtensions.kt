@@ -9,7 +9,7 @@ package net.kibotu.webviewadapter
 import android.content.Context
 import android.util.Log
 
-internal val debug = true
+internal val debug = BuildConfig.DEBUG
 
 internal fun Any.log(message: (() -> String?)?) {
     if (debug)
