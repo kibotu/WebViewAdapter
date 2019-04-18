@@ -78,7 +78,6 @@ android {
 dependencies {
     implementation libs.kotlinJdk8
     implementation libs.constraintLayout
-    implementation libs.supportAnnotations
     implementation libs.supportDesign
 }
 

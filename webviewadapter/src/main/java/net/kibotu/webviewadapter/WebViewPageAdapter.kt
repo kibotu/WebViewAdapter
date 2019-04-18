@@ -27,13 +27,21 @@ open class WebViewPageAdapter(
     var currentItem: Int = 0
         private set
 
-    fun selectCurrentItem(current: Int, loadUrl: Boolean = true) {
+    var onLoadUrl: ((String) -> Unit)? = null
+
+    open fun loadCurrentItem() {
+        val url = pages[currentItem].url
+        onLoadUrl?.invoke(url)
+        webView.loadUrl(url)
+    }
+
+    open fun selectCurrentItem(current: Int, loadUrl: Boolean = true) {
         currentItem = clamp(current, 0, pages.size - 1)
         log { "selectCurrentItem $currentItem -> ${pages[currentItem].url}" }
         tabLayout.getTabAt(currentItem)?.select()
 
         if (loadUrl)
-            webView.loadUrl(pages[currentItem].url)
+            loadCurrentItem()
     }
 
     protected fun populateTabs() {
@@ -98,7 +106,7 @@ open class WebViewPageAdapter(
 
         if (currentItem != tab.position) {
             currentItem = tab.position
-            webView.loadUrl(pages[currentItem].url)
+            loadCurrentItem()
         }
     }
 
@@ -123,8 +131,12 @@ open class WebViewPageAdapter(
 
     // endregion
 
-    fun add(tab: Tab) {
+    open fun add(tab: Tab) {
         log { "add ${tab.resNameString(tabLayout.context)}" }
         pages.add(tab)
+    }
+
+    open fun addAll(vararg tabs: Tab) = tabs.forEach {
+        add(it)
     }
 }

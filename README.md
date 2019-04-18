@@ -43,10 +43,9 @@ ActionBar like usability for a webview. Also modular handling of uri event handl
 
     adapter.selectCurrentItem(0, true)
 
-4 profit
+4 profit :)
 
-
-###License
+### License
 <pre>
 Copyright 2019 Jan Rabe
 
