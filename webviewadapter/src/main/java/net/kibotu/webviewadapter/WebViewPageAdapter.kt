@@ -30,9 +30,10 @@ open class WebViewPageAdapter(
     fun selectCurrentItem(current: Int, loadUrl: Boolean = true) {
         currentItem = clamp(current, 0, pages.size - 1)
         log { "selectCurrentItem $currentItem -> ${pages[currentItem].url}" }
+        tabLayout.getTabAt(currentItem)?.select()
+
         if (loadUrl)
             webView.loadUrl(pages[currentItem].url)
-        tabLayout.getTabAt(currentItem)?.select()
     }
 
     protected fun populateTabs() {
@@ -95,8 +96,10 @@ open class WebViewPageAdapter(
 
         styleSelectedTab(tab ?: return)
 
-        if (currentItem != tab.position)
+        if (currentItem != tab.position) {
             currentItem = tab.position
+            webView.loadUrl(pages[currentItem].url)
+        }
     }
 
     // endregion

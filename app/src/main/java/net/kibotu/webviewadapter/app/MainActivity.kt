@@ -22,6 +22,14 @@ class MainActivity : AppCompatActivity() {
 
         Logger.addLogger(LogcatLogger())
 
+        addPages()
+
+        loadInitialWebViewUrl()
+
+        addDebugButtons()
+    }
+
+    private fun addPages() {
         adapter = WebViewPageAdapter(webView, tabLayout)
 
         adapter.add(Tab("https://github.com/kibotu/RecyclerViewPresenter", R.string.tab_1, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
@@ -31,8 +39,19 @@ class MainActivity : AppCompatActivity() {
         adapter.add(Tab("https://github.com/kibotu/KalmanRx", R.string.tab_5, R.drawable.ic_edit_black_24dp, R.color.inactiveColorTint, R.color.colorPrimary))
 
         adapter.notifyDataSetChanged()
+    }
 
+    private fun loadInitialWebViewUrl() {
 
+        val customInitialPage = true
+
+        if (customInitialPage)
+            webView.loadUrl("https://www.google.com")
+        else
+            adapter.selectCurrentItem(0, true)
+    }
+
+    private fun addDebugButtons() {
         // selecting tab without loading url, required for selecting tabs on in-webview-navigation
 
         selectPreviousTab.onClick {
