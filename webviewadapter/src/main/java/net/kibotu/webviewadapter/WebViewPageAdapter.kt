@@ -82,7 +82,7 @@ open class WebViewPageAdapter(
 
         populateTabs()
 
-        selectCurrentItem(0)
+        selectCurrentItem(0, false)
     }
 
     // endregion

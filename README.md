@@ -43,6 +43,10 @@ ActionBar like usability for a webview. Also modular handling of uri event handl
 
     adapter.selectCurrentItem(0, true)
 
+(optional) add onLoading Url callback
+
+    adapter.onLoadUrl = { logv("onLoading $it") }
+
 4 profit :)
 
 ### License

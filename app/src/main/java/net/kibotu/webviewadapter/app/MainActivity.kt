@@ -48,12 +48,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadInitialWebViewUrl() {
 
-        val customInitialPage = true
+        val customInitialPage = false
 
         if (customInitialPage)
             webView.loadUrl("https://www.google.com")
         else
-            adapter.selectCurrentItem(0, true)
+            adapter.selectCurrentItem(0)
     }
 
     private fun addDebugButtons() {
